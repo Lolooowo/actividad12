@@ -1,4 +1,26 @@
-#def ordenamientoRepartidaores(lista):
+def ordenamientoRepartidaores(lista):
+    if len(lista)<=1:
+        return lista
+    else:
+        pivote = lista[nombre]["paquetes"]
+        mayores = [value for value in lista[1:].values("paquetes") if value > pivote]
+        iguales = [value for value in lista.values() if value==pivote]
+        menores = [value for value in lista[1:].values("paquetes") if value < pivote]
+        return ordenamientoRepartidaores(mayores) + iguales + ordenamientoRepartidaores(menores)
+def buscarRepartidor(lista, objetivo):
+    for clave, valor in lista.items():
+        if clave == objetivo:
+            return clave
+    else:
+        return None
+def cantidadPaquetes(repartidores):
+    pedidos =0
+    for clave, valor in repartidores.items():
+
+
+
+
+
 repartidores ={}
 numRepartidores = int(input("Ingrese el numero de repartidores: "))
 for i in range(numRepartidores):
@@ -18,3 +40,10 @@ for i in range(numRepartidores):
                 }
     else:
         print("Ese nombre ya esta registrado")
+ordenados = ordenamientoRepartidaores(repartidores)
+print(ordenados)
+
+nombreBuscar = input("Ingrese el nombre de un repartidor para buscarlo: ")
+for clave, valor in repartidores.items():
+    if clave == nombreBuscar:
+        print(f"{clave}: paquetes entregados: {valor['paquetes']} ")
